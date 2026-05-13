@@ -3,7 +3,6 @@ import { contatoService } from '../service/contato-service.js'
 (async () => { 
   const pegaURL = new URL(window.location)
   const id = pegaURL.searchParams.get('id')
-  
   const inputNome = document.querySelector('[data-nome]')
   const inputTelefone = document.querySelector('[data-telefone]')
   const inputEmail = document.querySelector('[data-email]')
@@ -16,6 +15,7 @@ import { contatoService } from '../service/contato-service.js'
     inputTelefone.value = dados.telefone
     inputDataNas.value = dados.dataNascimento.split("T")[0];
   }
+  
   catch(erro){
     console.log(erro)
     window.location.href="../telas/erro.html"
@@ -27,11 +27,11 @@ import { contatoService } from '../service/contato-service.js'
     evento.preventDefault()
     try {
       await contatoService.atualizaContato(id, inputNome.value, inputTelefone.value, inputEmail.value, inputDataNas.value)
-      window.location.href = "../telas/edicao_concluida.html"
+      window.location.href = "../view/edicao_concluida.html"
     }
     catch(erro){
       console.log(erro)
-      window.location.href="../telas/erro.html"
+      window.location.href="../view/erro.html"
     }
   })
 })()

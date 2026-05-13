@@ -1,8 +1,6 @@
 
 import { contatoService } from '../service/contato-service.js'
-
 const formulario = document.querySelector('[data-form]')
-
 
 formulario.addEventListener('submit', async (evento) => {
   evento.preventDefault()
@@ -14,10 +12,10 @@ formulario.addEventListener('submit', async (evento) => {
     const data_nas = evento.target.querySelector('[data-date]').value
 
     await contatoService.criaContato(nome, telefone, email, ativo, data_nas)
-    window.location.href = '../telas/cadastro_concluido.html'
+    window.location.href = '../view/cadastro_concluido.html'
   }
   catch (erro) {
     console.log(erro);
-    window.location.href = "../telas/erro.html"
+    window.location.href = "../view/erro.html"
   }
 });
